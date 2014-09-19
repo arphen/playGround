@@ -1,2 +1,6 @@
 ﻿Design by EZoAPP 
 http://goo.gl/OWuZQK
+
+Deploy to Azure site: 
+http://arphenapp.azurewebsites.net/bottle/
+

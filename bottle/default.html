@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href="http://jqmdesigner.appspot.com/gk/lib/jquery.mobile/1.4.3/jquery.mobile-1.4.3.min.css" rel="stylesheet" type="text/css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+  <!-- Uncomment the following to include cordova in your android project -->
+  <!--<script src="http://jqmdesigner.appspot.com/platforms/android/cordova.js"></script>-->
+  <title>EZo App</title>
+</head>
+
+<body>
+  <!-- Page: home  -->
+  <div id="home" data-role="page">
+    <div data-role="header" data-position="fixed">
+      <h3>算瓶子問題</h3>
+    </div>
+    <div role="main" class="ui-content">
+      <div class="ui-field-contain">
+        <label for="gk-919hj60">你有幾元？</label>
+        <input id="gk-919hj60" value="20" min="0" max="100" type="range">
+      </div>
+      <div class="ui-field-contain">
+        <label for="gk-9199uwO">每瓶單價幾元？</label>
+        <input id="gk-9199uwO" value="2" min="0" max="100" type="range">
+      </div>
+      <div class="ui-field-contain">
+        <label for="gk-9197ypM">幾個瓶蓋換1瓶？</label>
+        <input id="gk-9197ypM" value="2" min="0" max="100" type="range">
+      </div>
+      <div class="ui-field-contain">
+        <label for="gk-919oqit">幾個瓶身換1瓶？</label>
+        <input id="gk-919oqit" value="4" min="0" max="100" type="range">
+      </div>
+      <a class="ui-btn" id="btnRun">計算</a>
+    </div>
+  </div>
+</body>
+
+</html>

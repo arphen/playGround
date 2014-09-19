@@ -6,13 +6,100 @@
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <link href="http://jqmdesigner.appspot.com/gk/lib/jquery.mobile/1.4.3/jquery.mobile-1.4.3.min.css" rel="stylesheet" type="text/css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script>
+    $(document).on("mobileinit", function () {
+      $.mobile.autoInitializePage = false;
+      $.mobile.hashListeningEnabled = false;
+    });
+
+    function mobileInitPage() {
+      $.mobile.hashListeningEnabled = true;
+      $.mobile.initializePage();
+    };
+  </script>
   <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
   <!-- Uncomment the following to include cordova in your android project -->
   <!--<script src="http://jqmdesigner.appspot.com/platforms/android/cordova.js"></script>-->
+  <!-- GK Loader use RequireJS to load module -->
+  <script src="http://requirejs.org/docs/release/2.1.11/minified/require.js"></script>
+  <!--Plug in GK-->
+  <script src="http://jqmdesigner.appspot.com/components/jquery.gk/jquery.gk.min.js"></script>
+  <!-- Load GK components -->
+  <script components="http://jqmdesigner.appspot.com/components/gk-ext/gk-text.html" callback="mobileInitPage" src="http://jqmdesigner.appspot.com/components/gk-loader/gk-loader.js"></script>
+  <!-- Export JS  -->
+  <script>
+    $(document).one("pageshow", "#home", function () {
+      var $ele = $("#gk-919MahY"),
+        url = $ele.attr("loadURL");
+      if (url) {
+        $ele.gk("load", url);
+      }
+    });
+
+    function run() {
+      // 取得參數
+      var money = $('#money').val();
+      var price = $('#price').val();
+      var cap = $('#cap').val();
+      var bod = $('#bod').val();
+
+      var ans = howManyBottle(money, price, cap, bod);
+
+      $('#result').text('共' + ans.bottles + '瓶，剩下' + ans.caps + '瓶蓋、' + ans.bodies + '瓶身');
+
+
+    }
+
+    /****************************
+     * input:
+     *    money  - 有多少錢
+     *    price  - 每瓶單價
+     *    cap    - 幾個瓶蓋換1瓶
+     *    bod    - 幾個瓶身換1瓶
+     * output:
+     *    bottle - 共可買＋換幾瓶
+     *    cap    - 剩幾個瓶蓋
+     *    body   - 剩幾個瓶身
+     ****************************/
+    function howManyBottle(money, price, cap, body) {
+      var n = parseInt(money / price, 10);
+      var total = n;
+      var i = 0,
+        j = 0,
+        p = 0,
+        q = 0;
+      while (n > 0) { // 重複做到不能再換瓶為止
+        // cap個瓶蓋換1瓶
+        i = parseInt(n / cap, 10); // 可換i瓶
+        j += n % cap; // j = 上次剩的瓶蓋，加上這次剩的瓶蓋
+        if (j >= cap) { // 瓶蓋數是否可再換
+          i += parseInt(j / cap, 10);
+          j = j % cap;
+        }
+
+        // body個瓶身換1瓶
+        p = parseInt(n / body, 10); // 可換i瓶
+        q += n % body; // q = 上次剩的瓶身，加上這次剩的瓶身
+        if (q >= body) { // 瓶身數是否可再換
+          p += parseInt(q / body, 10);
+          q = q % body;
+        }
+
+        n = i + p;
+        total += n;
+      } // end while
+
+      return {
+        'bottles': total,
+        'caps': j,
+        'bodies': q
+      };
+    }
+  </script>
   <title>EZo App</title>
 </head>
 
-<body>
+<body gk-app>
   <!-- Page: home  -->
   <div id="home" data-role="page">
     <div data-role="header" data-position="fixed">
@@ -21,21 +108,22 @@
     <div role="main" class="ui-content">
       <div class="ui-field-contain">
         <label for="gk-919hj60">你有幾元？</label>
-        <input id="gk-919hj60" value="20" min="0" max="100" type="range">
+        <input id="money" value="20" min="0" max="100" type="range">
       </div>
       <div class="ui-field-contain">
-        <label for="gk-9199uwO">每瓶單價幾元？</label>
-        <input id="gk-9199uwO" value="2" min="0" max="100" type="range">
+        <label for="gk-9199uwO">每瓶幾元？</label>
+        <input id="price" value="2" min="0" max="100" type="range">
       </div>
       <div class="ui-field-contain">
         <label for="gk-9197ypM">幾個瓶蓋換1瓶？</label>
-        <input id="gk-9197ypM" value="2" min="0" max="100" type="range">
+        <input id="cap" value="2" min="0" max="100" type="range">
       </div>
       <div class="ui-field-contain">
         <label for="gk-919oqit">幾個瓶身換1瓶？</label>
-        <input id="gk-919oqit" value="4" min="0" max="100" type="range">
+        <input id="bod" value="4" min="0" max="100" type="range">
       </div>
-      <a class="ui-btn" id="btnRun">計算</a>
+      <a class="ui-btn" id="btnRun" onclick="run();">計算</a>
+      <h3 is="gk-text" id="result"></h3>
     </div>
   </div>
 </body>

@@ -44,9 +44,11 @@
       var bod = $('#bod').val();
 
       var ans = howManyBottle(money, price, cap, bod);
-
-      $('#result').text('共' + ans.bottles + '瓶，剩下' + ans.caps + '瓶蓋、' + ans.bodies + '瓶身');
-
+      if(!ans){
+          $('#result').text('單價、瓶蓋、瓶身不得為0');
+      }else{
+          $('#result').text('共' + ans.bottles + '瓶，剩下' + ans.caps + '瓶蓋、' + ans.bodies + '瓶身');
+      }
 
     }
 
@@ -62,6 +64,9 @@
      *    body   - 剩幾個瓶身
      ****************************/
     function howManyBottle(money, price, cap, body) {
+      if(price<=0 || cap<=0 || body<=0){
+          return null;
+      }
       var n = parseInt(money / price, 10);
       var total = n;
       var i = 0,

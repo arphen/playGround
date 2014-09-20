@@ -1,6 +1,6 @@
 算瓶子問題
 
-Design by EZoAPP: 可線上設計UI、寫程式及測試。寫好的程式需用copy&paste貼到其它可以同步至GitHub的地方。
+Design by EZoAPP: 可線上設計UI、寫程式及測試。寫好的程式需用copy&paste貼到其它可以同步至GitHub的地方。(記得修改<title></title>)
 http://goo.gl/OWuZQK
 
 GitHub repository - playGround: 程式碼存放在GitHub

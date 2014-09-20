@@ -1,11 +1,13 @@
-﻿Design by EZoAPP 
+﻿算瓶子問題
+
+Design by EZoAPP: 可線上設計UI、寫程式及測試。寫好的程式需用copy&paste貼到其它可以同步至GitHub的地方。
 http://goo.gl/OWuZQK
 
-GitHub repository: playGround
+GitHub repository - playGround: 程式碼存放在GitHub
 https://github.com/arphen/playGround.git
 
-Deploy to Azure site: 
+Deploy to Azure web site: 可在Azure將GitHub設成自動部署來源，一旦GitHub有更新，程式自動同步部署。
 http://arphenapp.azurewebsites.net/bottle/
 
-Codio project: playGround
+Codio project - playGround: 另一個線上編輯程式的工具，缺點是無法線上直接測，優點是可和GitHub同步。
 https://codio.com/arphen/playGround

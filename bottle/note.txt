@@ -1,6 +1,11 @@
 ﻿Design by EZoAPP 
 http://goo.gl/OWuZQK
 
+GitHub repository: playGround
+https://github.com/arphen/playGround.git
+
 Deploy to Azure site: 
 http://arphenapp.azurewebsites.net/bottle/
 
+Codio project: playGround
+https://codio.com/arphen/playGround

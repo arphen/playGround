@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Timer</title>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script type="text/javascript" src="timer.js"></script>
+  <script>
+  $(document).ready(function() {
+    main();
+  });
+
+  </script>
+  <style type="text/css">
+  * {
+    font-size: 80pt;
+  }
+
+  #overlay {
+    position: absolute;
+    z-index: 999;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+  }
+
+  </style>
+</head>
+
+<body>
+  <button id="btnTimer">Start</button>
+  <div>
+    <span id="timer1"></span>
+  </div>
+  <div>
+    <span id="timer2"></span>
+  </div>
+  <div id="overlay" style="display:none">
+    <button id="ok1">OK</button>
+    <button id="ok2">OK</button>
+  </div>
+
+</body>
+
+</html>
